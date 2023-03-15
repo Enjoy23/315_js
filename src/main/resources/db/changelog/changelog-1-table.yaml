@@ -1,0 +1,110 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1677708211283-1
+      author: romanmarkov (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: INT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: role
+  - changeSet:
+      id: 1677708211283-2
+      author: romanmarkov (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: age
+                  type: TINYINT(3)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+            tableName: user
+  - changeSet:
+      id: 1677708211283-3
+      author: romanmarkov (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: role_id
+                  type: INT
+            tableName: user_role
+  - changeSet:
+      id: 1677708211283-4
+      author: romanmarkov (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: role_id
+            indexName: FKa68196081fvovjhkek5m97n3y
+            tableName: user_role
+  - changeSet:
+      id: 1677708211283-5
+      author: romanmarkov (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_role
+            constraintName: FK859n2jvi8ivhui0rl0esws6o
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: user
+            validate: true
+  - changeSet:
+      id: 1677708211283-6
+      author: romanmarkov (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: user_role
+            constraintName: FKa68196081fvovjhkek5m97n3y
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: role
+            validate: true
+
